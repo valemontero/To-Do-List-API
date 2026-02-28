@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.example.todopersistence.Dto.TaskCreateDTO;
 import org.example.todopersistence.Dto.TaskResponseDTO;
 import org.example.todopersistence.Dto.TaskUpdateDTO;
+import org.example.todopersistence.Models.TaskStatus;
 import org.example.todopersistence.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/tasks")
-    public List<TaskResponseDTO> getTasks(){
-        return taskService.getTasks();
+    public List<TaskResponseDTO> getTasks(@RequestParam(required = false) TaskStatus status){
+        return taskService.getTasks(status);
     }
 
     @GetMapping("/tasks/{id}")

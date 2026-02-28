@@ -19,8 +19,14 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public List<TaskResponseDTO> getTasks(){
-        List<Task> tasks = taskRepository.findAll();
+    public List<TaskResponseDTO> getTasks(TaskStatus status){
+        List<Task> tasks;
+        if(status == null){
+            tasks = taskRepository.findAll();
+        } else {
+            tasks = taskRepository.findByStatus(status);
+        }
+
         return tasks.stream()
                 .map(task -> new TaskResponseDTO(
                         task.getId(),
@@ -43,7 +49,7 @@ public class TaskService {
         Task task = new Task();
         task.setTitle(dto.getTitle());
         task.setDescription(dto.getDescription());
-        task.setStatus(TaskStatus.IN_PROGRESS);
+        task.setStatus(TaskStatus.PENDING);
 
         Task savedTask = taskRepository.save(task);
 
@@ -64,6 +70,11 @@ public class TaskService {
         if(dto.getDescription() != null){
             task.setDescription((dto.getDescription()));
         }
+
+        if(dto.getStatus() != null){
+            task.setStatus((dto.getStatus()));
+        }
+
         taskRepository.save(task);
         return new TaskResponseDTO(
                 task.getId(),
