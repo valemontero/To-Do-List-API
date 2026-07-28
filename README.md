@@ -1,5 +1,6 @@
 # API TODO LIST - Spring Boot
-Proyecto autodidacta de desarrollo backend
+Proyecto autodidacta de desarrollo backend con la intención de practicar los fundamentos
+
 
 API REST para la gestión de tareas (CRUD).
 
