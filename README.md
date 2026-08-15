@@ -23,7 +23,3 @@ API REST para la gestión de tareas (CRUD).
 - Uso de DTOs para garantizar la integridad y evitar la exposición de entidades
 - Manejo de excepciones HTTP y respuestas claras hacia el cliente.
 - Arquitectura en capas y división de responsabilidades (Controller, Service, Repository)
-
-### Para ejecutarlo
-1. Crear la base "tasks_db" en PostgreSQL
-2. Ajustar las *application.properties* con las credenciales propias correspondientes
